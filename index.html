@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal portfolio of MD Tanjeel Imam, Diploma in Computer Science Engineering graduate." />
+  <title>MD Tanjeel Imam | Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2e;
+      --panel-light: #18233b;
+      --text: #edf2ff;
+      --muted: #aab6d3;
+      --accent: #69e0c2;
+      --accent-2: #80a8ff;
+      --border: rgba(255,255,255,.11);
+      --shadow: 0 22px 70px rgba(0,0,0,.28);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text); background:
+        radial-gradient(circle at 80% 0%, rgba(75,119,255,.16), transparent 30rem),
+        radial-gradient(circle at 0% 30%, rgba(65,219,180,.09), transparent 28rem), var(--bg);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, 92%); margin: auto; }
+    header {
+      position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px);
+      background: rgba(11,16,32,.78); border-bottom: 1px solid var(--border);
+    }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.2rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 25px; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .hero { min-height: 78vh; display: grid; grid-template-columns: 1.25fr .75fr; gap: 48px; align-items: center; padding: 76px 0 85px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-weight: 700; font-size: .82rem; text-transform: uppercase; letter-spacing: .13em; }
+    .dot { width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 18px var(--accent); }
+    h1 { font-size: clamp(2.8rem, 6vw, 5.4rem); line-height: 1.04; letter-spacing: -.065em; margin: 18px 0 22px; }
+    h1 span { color: var(--accent); }
+    .hero p { color: var(--muted); max-width: 640px; font-size: 1.08rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 19px; border-radius: 12px; font-weight: 750; border: 1px solid var(--border); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #071a18; background: var(--accent); border-color: transparent; }
+    .btn-secondary { background: rgba(255,255,255,.04); }
+    .profile-card { padding: 28px; border: 1px solid var(--border); background: linear-gradient(145deg, rgba(24,35,59,.95), rgba(18,26,46,.8)); border-radius: 26px; box-shadow: var(--shadow); position: relative; overflow: hidden; }
+    .profile-card::before { content: ""; position: absolute; width: 190px; height: 190px; border-radius: 50%; background: rgba(105,224,194,.13); filter: blur(3px); top: -85px; right: -70px; }
+    .avatar { width: 94px; height: 94px; display: grid; place-items: center; border-radius: 25px; color: #071a18; font-size: 2rem; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--accent-2)); margin-bottom: 22px; position: relative; }
+    .profile-card h2 { font-size: 1.35rem; margin-bottom: 4px; }
+    .role { color: var(--accent); font-size: .95rem; }
+    .mini-info { display: grid; gap: 13px; margin-top: 25px; }
+    .mini-info div { display: flex; gap: 12px; color: var(--muted); font-size: .92rem; overflow-wrap: anywhere; }
+    .mini-info strong { color: var(--text); min-width: 72px; }
+    section { padding: 76px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading .eyebrow { margin-bottom: 8px; }
+    h2.section-title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.045em; line-height: 1.15; }
+    .section-intro { color: var(--muted); max-width: 720px; margin-top: 12px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 22px; }
+    .card { background: rgba(18,26,46,.78); border: 1px solid var(--border); border-radius: 20px; padding: 26px; }
+    .card p { color: var(--muted); }
+    .focus-list { display: grid; gap: 14px; }
+    .focus-item { display: flex; align-items: flex-start; gap: 12px; }
+    .check { color: var(--accent); font-weight: 900; }
+    .focus-item span:last-child { color: var(--muted); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card h3 { margin-bottom: 13px; font-size: 1.04rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { border: 1px solid rgba(128,168,255,.2); background: rgba(128,168,255,.08); color: #dce6ff; padding: 6px 10px; border-radius: 8px; font-size: .85rem; }
+    .training { display: flex; align-items: flex-start; gap: 18px; }
+    .training-icon { flex: 0 0 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: var(--accent); background: rgba(105,224,194,.1); font-size: 1.3rem; }
+    .training h3 { margin-bottom: 5px; }
+    .training p { color: var(--muted); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; }
+    .contact-method { display: flex; align-items: center; gap: 13px; margin-top: 18px; }
+    .contact-icon { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--panel-light); color: var(--accent); }
+    .contact-method small { display: block; color: var(--muted); }
+    .contact-method a { overflow-wrap: anywhere; }
+    .contact-method a:hover { color: var(--accent); }
+    .note { color: var(--muted); font-size: .92rem; }
+    footer { border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: .88rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero, .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 62px; }
+      .profile-card { max-width: 540px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 13px; font-size: .82rem; }
+    }
+    @media (max-width: 520px) {
+      .nav-links a:nth-child(2), .nav-links a:nth-child(3) { display: none; }
+      .skills-grid { grid-template-columns: 1fr; }
+      section { padding: 58px 0; }
+      .card, .profile-card { padding: 21px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">MTI<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#training">Training</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Computer Science Engineering</div>
+        <h1>Hi, I'm<br /><span>MD Tanjeel Imam.</span></h1>
+        <p>Diploma in Computer Science Engineering graduate interested in software development, web development, programming, and IT support. I enjoy solving problems, learning new technologies, and building a strong foundation for a career in technology.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="#skills">Explore my skills ↓</a>
+        </div>
+      </div>
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="avatar" aria-hidden="true">MTI</div>
+        <h2>MD Tanjeel Imam</h2>
+        <div class="role">Entry-Level IT / Software Candidate</div>
+        <div class="mini-info">
+          <div><strong>Education</strong><span>Diploma in Computer Science Engineering</span></div>
+          <div><strong>Focus</strong><span>Programming · Web · IT Support</span></div>
+          <div><strong>Training</strong><span>Vocational Training in C Programming</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2 class="section-title">Building skills for a career in technology.</h2>
+          <p class="section-intro">My background combines academic knowledge of core computer science concepts with practical familiarity with programming languages and development tools.</p>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <p>Diploma in Computer Science Engineering graduate with a strong foundation in programming, web development, databases, computer networks, operating systems, and software development concepts. I have academic knowledge of Java, Python, C, C++, HTML, CSS, JavaScript, and MySQL, supported by working knowledge of Git, GitHub, VS Code, Windows, and Linux. I am seeking an entry-level opportunity where I can contribute, learn from experienced professionals, and grow through real-world technical work.</p>
+          </article>
+          <article class="card focus-list">
+            <div class="focus-item"><span class="check">✓</span><span>Problem-solving and logical thinking</span></div>
+            <div class="focus-item"><span class="check">✓</span><span>Teamwork and willingness to learn</span></div>
+            <div class="focus-item"><span class="check">✓</span><span>Interest in practical, real-world IT challenges</span></div>
+            <div class="focus-item"><span class="check">✓</span><span>Open to entry-level technical opportunities</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Technical toolkit</div>
+          <h2 class="section-title">Skills & knowledge</h2>
+          <p class="section-intro">A snapshot of the technologies and computer science topics I have studied or worked with academically.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="card skill-card">
+            <h3>Programming</h3>
+            <div class="tags"><span class="tag">C</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">Python</span></div>
+          </article>
+          <article class="card skill-card">
+            <h3>Web Development</h3>
+            <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span></div>
+          </article>
+          <article class="card skill-card">
+            <h3>Database</h3>
+            <div class="tags"><span class="tag">MySQL</span><span class="tag">DBMS</span></div>
+          </article>
+          <article class="card skill-card">
+            <h3>Tools</h3>
+            <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span></div>
+          </article>
+          <article class="card skill-card">
+            <h3>Operating Systems</h3>
+            <div class="tags"><span class="tag">Windows</span><span class="tag">Linux</span></div>
+          </article>
+          <article class="card skill-card">
+            <h3>Core Concepts</h3>
+            <div class="tags"><span class="tag">Data Structures</span><span class="tag">Networking</span><span class="tag">OOP</span><span class="tag">Software Development</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="training">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Learning & development</div>
+          <h2 class="section-title">Training</h2>
+        </div>
+        <article class="card training">
+          <div class="training-icon" aria-hidden="true">⌘</div>
+          <div>
+            <h3>Vocational Training in C Programming</h3>
+            <p>Completed vocational training focused on C programming. This supported my understanding of programming fundamentals and structured problem-solving.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Let's connect</div>
+          <h2 class="section-title">Have an opportunity in mind?</h2>
+          <p class="section-intro">I am looking for an entry-level opportunity in software development, IT support, technical support, web development, or programming.</p>
+        </div>
+        <div class="contact-grid">
+          <article class="card">
+            <h3>Contact details</h3>
+            <div class="contact-method">
+              <div class="contact-icon" aria-hidden="true">✉</div>
+              <div><small>Email</small><a href="mailto:mdtanjeelimam786@gmail.com">mdtanjeelimam786@gmail.com</a></div>
+            </div>
+            <div class="contact-method">
+              <div class="contact-icon" aria-hidden="true">☎</div>
+              <div><small>Phone</small><a href="tel:+917033317986">+91 7033317986</a></div>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Open to opportunities</h3>
+            <p class="note" style="margin-top:10px">If you are hiring for a fresher or entry-level technical role, feel free to contact me by phone or email. I would welcome the opportunity to discuss how I can contribute and continue learning.</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="mailto:mdtanjeelimam786@gmail.com?subject=Entry-Level%20Opportunity">Email me ↗</a>
+              <a class="btn btn-secondary" href="tel:+917033317986">Call me ☎</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> MD Tanjeel Imam</span>
+      <span>Designed with care · Personal portfolio</span>
+    </div>
+  </footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
